@@ -14,6 +14,6 @@
             "KPIPiece"
         ],
         "secrets": [],
-        "source_image": "ghcr.io/filipchrvala/industry_sg_vre:0.1.51-group0"
+        "source_image": "ghcr.io/filipchrvala/industry_sg_vre:0.1.52-group0"
     }
 }

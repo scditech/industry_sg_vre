@@ -400,25 +400,25 @@
         "input_schema": {
             "properties": {
                 "kpi_results_csv": {
-                    "description": "Path to kpi_results.csv from KPIPiece",
+                    "description": "From KPIPiece",
                     "title": "Kpi Results Csv",
                     "type": "string"
                 },
                 "battery_summary_csv": {
-                    "default": "",
-                    "description": "Path to battery summary csv (cycles etc.)",
+                    "default": "/home/shared_storage/battery_summary_TEST.csv",
+                    "description": "Battery summary csv",
                     "title": "Battery Summary Csv",
                     "type": "string"
                 },
                 "investment_config_yml": {
-                    "description": "Path to investment config yaml",
+                    "default": "/home/shared_storage/investment_config.yml",
+                    "description": "Investment config yaml",
                     "title": "Investment Config Yml",
                     "type": "string"
                 }
             },
             "required": [
-                "kpi_results_csv",
-                "investment_config_yml"
+                "kpi_results_csv"
             ],
             "title": "InputModel",
             "type": "object"
