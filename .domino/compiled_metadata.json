@@ -1,4 +1,66 @@
 {
+    "PredictPiece": {
+        "name": "PredictPiece",
+        "dependency": {
+            "dockerfile": null,
+            "requirements_file": "requirements_0.txt"
+        },
+        "tags": [],
+        "style": {
+            "node_label": "Predict Energy Load",
+            "node_type": "default",
+            "node_style": {
+                "backgroundColor": "#ebebeb"
+            },
+            "useIcon": true,
+            "icon_class_name": "fa-solid:chart-line",
+            "iconStyle": {
+                "cursor": "pointer"
+            }
+        },
+        "description": "Run prediction using trained XGBoost model",
+        "dependencies_group": "0",
+        "input_schema": {
+            "properties": {
+                "model_path": {
+                    "description": "Path to trained XGBoost model",
+                    "title": "Model Path",
+                    "type": "string"
+                },
+                "data_path": {
+                    "description": "Path to prediction dataset (15min)",
+                    "title": "Data Path",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "model_path",
+                "data_path"
+            ],
+            "title": "InputModel",
+            "type": "object"
+        },
+        "output_schema": {
+            "properties": {
+                "message": {
+                    "title": "Message",
+                    "type": "string"
+                },
+                "prediction_file_path": {
+                    "title": "Prediction File Path",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "message",
+                "prediction_file_path"
+            ],
+            "title": "OutputModel",
+            "type": "object"
+        },
+        "secrets_schema": null,
+        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/PredictPiece"
+    },
     "TrainModelPiece": {
         "name": "TrainModelPiece",
         "dependency": {
@@ -157,61 +219,55 @@
         "secrets_schema": null,
         "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/PreprocessEnergyDataPiece"
     },
-    "KPIPiece": {
-        "name": "KPIPiece",
+    "SimulatePiece": {
+        "name": "SimulatePiece",
         "dependency": {
             "dockerfile": null,
             "requirements_file": "requirements_0.txt"
         },
         "tags": [],
         "style": {
-            "node_label": "Compute Energy KPIs",
+            "node_label": "Simulate Energy Scenario",
             "node_type": "default",
             "node_style": {
                 "backgroundColor": "#ebebeb"
             },
             "useIcon": true,
-            "icon_class_name": "fa-solid:chart-column",
+            "icon_class_name": "fa-solid:calculator",
             "iconStyle": {
                 "cursor": "pointer"
             }
         },
-        "description": "Compute operational and financial KPIs from simulation",
+        "description": "Energy simulation with solar and battery",
         "dependencies_group": "0",
         "input_schema": {
             "properties": {
                 "forecast_csv": {
-                    "description": "Path to predictions_15min.csv",
+                    "description": "Path to predictions_15min.csv from PredictPiece",
                     "title": "Forecast Csv",
                     "type": "string"
                 },
-                "simulated_load_csv": {
-                    "description": "Path to simulated_results.csv",
-                    "title": "Simulated Load Csv",
-                    "type": "string"
-                },
-                "scenario_summary_csv": {
-                    "description": "Path to summary.csv from SimulatePiece",
-                    "title": "Scenario Summary Csv",
-                    "type": "string"
-                },
-                "production_csv": {
-                    "description": "Production tons csv from disk",
-                    "title": "Production Csv",
-                    "type": "string"
-                },
-                "actual_csv": {
+                "virtual_solar_csv": {
                     "default": "",
-                    "description": "Optional actual load csv",
-                    "title": "Actual Csv",
+                    "description": "Path to virtual_solar.csv",
+                    "title": "Virtual Solar Csv",
+                    "type": "string"
+                },
+                "virtual_battery_soc_csv": {
+                    "default": "",
+                    "description": "Path to virtual_battery_soc.csv",
+                    "title": "Virtual Battery Soc Csv",
+                    "type": "string"
+                },
+                "scenario_yml": {
+                    "description": "Path to scenario yaml file",
+                    "title": "Scenario Yml",
                     "type": "string"
                 }
             },
             "required": [
                 "forecast_csv",
-                "simulated_load_csv",
-                "scenario_summary_csv",
-                "production_csv"
+                "scenario_yml"
             ],
             "title": "InputModel",
             "type": "object"
@@ -222,20 +278,25 @@
                     "title": "Message",
                     "type": "string"
                 },
-                "kpi_results_csv": {
-                    "title": "Kpi Results Csv",
+                "simulated_load_csv": {
+                    "title": "Simulated Load Csv",
+                    "type": "string"
+                },
+                "scenario_summary_csv": {
+                    "title": "Scenario Summary Csv",
                     "type": "string"
                 }
             },
             "required": [
                 "message",
-                "kpi_results_csv"
+                "simulated_load_csv",
+                "scenario_summary_csv"
             ],
             "title": "OutputModel",
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/KPIPiece"
+        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/SimulatePiece"
     },
     "FetchEnergyDataPiece": {
         "name": "FetchEnergyDataPiece",
@@ -383,117 +444,61 @@
         "secrets_schema": null,
         "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/InvestmentEvalPiece"
     },
-    "PredictPiece": {
-        "name": "PredictPiece",
+    "KPIPiece": {
+        "name": "KPIPiece",
         "dependency": {
             "dockerfile": null,
             "requirements_file": "requirements_0.txt"
         },
         "tags": [],
         "style": {
-            "node_label": "Predict Energy Load",
+            "node_label": "Compute Energy KPIs",
             "node_type": "default",
             "node_style": {
                 "backgroundColor": "#ebebeb"
             },
             "useIcon": true,
-            "icon_class_name": "fa-solid:chart-line",
+            "icon_class_name": "fa-solid:chart-column",
             "iconStyle": {
                 "cursor": "pointer"
             }
         },
-        "description": "Run prediction using trained XGBoost model",
-        "dependencies_group": "0",
-        "input_schema": {
-            "properties": {
-                "model_path": {
-                    "description": "Path to trained XGBoost model",
-                    "title": "Model Path",
-                    "type": "string"
-                },
-                "data_path": {
-                    "description": "Path to prediction dataset (15min)",
-                    "title": "Data Path",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "model_path",
-                "data_path"
-            ],
-            "title": "InputModel",
-            "type": "object"
-        },
-        "output_schema": {
-            "properties": {
-                "message": {
-                    "title": "Message",
-                    "type": "string"
-                },
-                "prediction_file_path": {
-                    "title": "Prediction File Path",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "message",
-                "prediction_file_path"
-            ],
-            "title": "OutputModel",
-            "type": "object"
-        },
-        "secrets_schema": null,
-        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/PredictPiece"
-    },
-    "SimulatePiece": {
-        "name": "SimulatePiece",
-        "dependency": {
-            "dockerfile": null,
-            "requirements_file": "requirements_0.txt"
-        },
-        "tags": [],
-        "style": {
-            "node_label": "Simulate Energy Scenario",
-            "node_type": "default",
-            "node_style": {
-                "backgroundColor": "#ebebeb"
-            },
-            "useIcon": true,
-            "icon_class_name": "fa-solid:calculator",
-            "iconStyle": {
-                "cursor": "pointer"
-            }
-        },
-        "description": "Energy simulation with solar and battery",
+        "description": "Compute operational and financial KPIs from simulation",
         "dependencies_group": "0",
         "input_schema": {
             "properties": {
                 "forecast_csv": {
-                    "description": "Path to predictions_15min.csv from PredictPiece",
+                    "description": "Path to predictions_15min.csv",
                     "title": "Forecast Csv",
                     "type": "string"
                 },
-                "virtual_solar_csv": {
-                    "default": "",
-                    "description": "Path to virtual_solar.csv",
-                    "title": "Virtual Solar Csv",
+                "simulated_load_csv": {
+                    "description": "Path to simulated_results.csv",
+                    "title": "Simulated Load Csv",
                     "type": "string"
                 },
-                "virtual_battery_soc_csv": {
-                    "default": "",
-                    "description": "Path to virtual_battery_soc.csv",
-                    "title": "Virtual Battery Soc Csv",
+                "scenario_summary_csv": {
+                    "description": "Path to summary.csv from SimulatePiece",
+                    "title": "Scenario Summary Csv",
                     "type": "string"
                 },
-                "scenario_yml": {
-                    "description": "Path to scenario yaml file",
-                    "title": "Scenario Yml",
+                "production_csv": {
+                    "description": "Production tons csv from disk",
+                    "title": "Production Csv",
+                    "type": "string"
+                },
+                "actual_csv": {
+                    "default": "",
+                    "description": "Optional actual load csv",
+                    "title": "Actual Csv",
                     "type": "string"
                 }
             },
             "required": [
                 "forecast_csv",
-                "scenario_yml"
+                "simulated_load_csv",
+                "scenario_summary_csv",
+                "production_csv"
             ],
             "title": "InputModel",
             "type": "object"
@@ -504,24 +509,19 @@
                     "title": "Message",
                     "type": "string"
                 },
-                "simulated_load_csv": {
-                    "title": "Simulated Load Csv",
-                    "type": "string"
-                },
-                "scenario_summary_csv": {
-                    "title": "Scenario Summary Csv",
+                "kpi_results_csv": {
+                    "title": "Kpi Results Csv",
                     "type": "string"
                 }
             },
             "required": [
                 "message",
-                "simulated_load_csv",
-                "scenario_summary_csv"
+                "kpi_results_csv"
             ],
             "title": "OutputModel",
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/SimulatePiece"
+        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/KPIPiece"
     }
 }
