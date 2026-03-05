@@ -163,7 +163,9 @@
             "dockerfile": null,
             "requirements_file": "requirements_0.txt"
         },
-        "tags": [],
+        "tags": [
+            "Energy"
+        ],
         "style": {
             "node_label": "Compute Energy KPIs",
             "node_type": "default",
@@ -178,6 +180,16 @@
         },
         "description": "Compute operational and financial KPIs from simulation",
         "dependencies_group": "0",
+        "container_resources": {
+            "requests": {
+                "cpu": 100,
+                "memory": 128
+            },
+            "limits": {
+                "cpu": 500,
+                "memory": 512
+            }
+        },
         "input_schema": {
             "properties": {
                 "forecast_csv": {
@@ -196,6 +208,7 @@
                     "type": "string"
                 },
                 "production_csv": {
+                    "default": "/home/shared_storage/production.csv",
                     "description": "Production tons csv from disk",
                     "title": "Production Csv",
                     "type": "string"
@@ -210,8 +223,7 @@
             "required": [
                 "forecast_csv",
                 "simulated_load_csv",
-                "scenario_summary_csv",
-                "production_csv"
+                "scenario_summary_csv"
             ],
             "title": "InputModel",
             "type": "object"
@@ -650,14 +662,14 @@
                     "type": "string"
                 },
                 "scenario_yml": {
+                    "default": "/home/shared_storage/scenario.yml",
                     "description": "Path to scenario yaml file",
                     "title": "Scenario Yml",
                     "type": "string"
                 }
             },
             "required": [
-                "forecast_csv",
-                "scenario_yml"
+                "forecast_csv"
             ],
             "title": "InputModel",
             "type": "object"
