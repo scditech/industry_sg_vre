@@ -75,7 +75,7 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/TrainModelPiece"
+        "source_url": "https://github.com/scditech/industry_sg_vre/tree/main/pieces/TrainModelPiece"
     },
     "PreprocessEnergyDataPiece": {
         "name": "PreprocessEnergyDataPiece",
@@ -155,7 +155,7 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/PreprocessEnergyDataPiece"
+        "source_url": "https://github.com/scditech/industry_sg_vre/tree/main/pieces/PreprocessEnergyDataPiece"
     },
     "KPIPiece": {
         "name": "KPIPiece",
@@ -247,7 +247,7 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/KPIPiece"
+        "source_url": "https://github.com/scditech/industry_sg_vre/tree/main/pieces/KPIPiece"
     },
     "FetchEnergyDataPiece": {
         "name": "FetchEnergyDataPiece",
@@ -325,7 +325,7 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/FetchEnergyDataPiece"
+        "source_url": "https://github.com/scditech/industry_sg_vre/tree/main/pieces/FetchEnergyDataPiece"
     },
     "SolarSimPiece": {
         "name": "SolarSimPiece",
@@ -395,7 +395,7 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/SolarSimPiece"
+        "source_url": "https://github.com/scditech/industry_sg_vre/tree/main/pieces/SolarSimPiece"
     },
     "BatterySimPiece": {
         "name": "BatterySimPiece",
@@ -489,7 +489,7 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/BatterySimPiece"
+        "source_url": "https://github.com/scditech/industry_sg_vre/tree/main/pieces/BatterySimPiece"
     },
     "InvestmentEvalPiece": {
         "name": "InvestmentEvalPiece",
@@ -557,7 +557,7 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/InvestmentEvalPiece"
+        "source_url": "https://github.com/scditech/industry_sg_vre/tree/main/pieces/InvestmentEvalPiece"
     },
     "PredictPiece": {
         "name": "PredictPiece",
@@ -619,7 +619,7 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/PredictPiece"
+        "source_url": "https://github.com/scditech/industry_sg_vre/tree/main/pieces/PredictPiece"
     },
     "SimulatePiece": {
         "name": "SimulatePiece",
@@ -698,6 +698,6 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/SimulatePiece"
+        "source_url": "https://github.com/scditech/industry_sg_vre/tree/main/pieces/SimulatePiece"
     }
 }
