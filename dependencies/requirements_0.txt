@@ -9,3 +9,4 @@ matplotlib==3.8.0
 numpy==1.26.4
 pyyaml>=6.0
 pvlib>=0.10.0
+streamlit>=1.28.0
