@@ -461,7 +461,7 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/DashboardPiece"
+        "source_url": "https://github.com/scditech/industry_sg_vre/tree/main/pieces/DashboardPiece"
     },
     "SolarSimPiece": {
         "name": "SolarSimPiece",
