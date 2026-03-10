@@ -1,0 +1,25 @@
+{
+  "name": "DashboardPiece",
+  "description": "Aggregates selected Piece outputs into dashboard_data.json for the Streamlit dashboard",
+  "dependencies_group": "0",
+  "dependency": {
+    "requirements_file": "requirements_0.txt"
+  },
+  "container_resources": {
+    "requests": {
+      "cpu": 100,
+      "memory": 128
+    },
+    "limits": {
+      "cpu": 500,
+      "memory": 512
+    }
+  },
+  "tags": [
+    "Energy"
+  ],
+  "style": {
+    "node_label": "DashboardPiece",
+    "icon_class_name": "fa-solid:chart-line"
+  }
+}
