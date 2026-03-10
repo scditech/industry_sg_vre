@@ -327,6 +327,142 @@
         "secrets_schema": null,
         "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/FetchEnergyDataPiece"
     },
+    "DashboardPiece": {
+        "name": "DashboardPiece",
+        "dependency": {
+            "dockerfile": null,
+            "requirements_file": "requirements_0.txt"
+        },
+        "tags": [
+            "Energy"
+        ],
+        "style": {
+            "node_label": "DashboardPiece",
+            "node_type": "default",
+            "node_style": {
+                "backgroundColor": "#ebebeb"
+            },
+            "useIcon": true,
+            "icon_class_name": "fa-solid:chart-line",
+            "iconStyle": {
+                "cursor": "pointer"
+            }
+        },
+        "description": "Aggregates selected Piece outputs into dashboard_data.json for the Streamlit dashboard",
+        "dependencies_group": "0",
+        "container_resources": {
+            "requests": {
+                "cpu": 100,
+                "memory": 128
+            },
+            "limits": {
+                "cpu": 500,
+                "memory": 512
+            }
+        },
+        "input_schema": {
+            "description": "DashboardPiece Input Model. All inputs optional; defaults point to shared_storage for Domino.",
+            "properties": {
+                "preprocess_predict_parquet": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "/home/shared_storage/predict_dataset_15min.parquet",
+                    "description": "PreprocessEnergyDataPiece output: predict_dataset_15min.parquet.",
+                    "title": "Preprocess Predict Parquet"
+                },
+                "predict_predictions_csv": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "/home/shared_storage/predictions_15min.csv",
+                    "description": "PredictPiece output: predictions_15min.csv.",
+                    "title": "Predict Predictions Csv"
+                },
+                "simulate_results_csv": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "/home/shared_storage/simulated_results.csv",
+                    "description": "SimulatePiece output: simulated_results.csv.",
+                    "title": "Simulate Results Csv"
+                },
+                "simulate_summary_csv": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "/home/shared_storage/summary.csv",
+                    "description": "SimulatePiece output: summary.csv.",
+                    "title": "Simulate Summary Csv"
+                },
+                "kpi_results_csv": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "/home/shared_storage/kpi_results.csv",
+                    "description": "KPIPiece output: kpi_results.csv.",
+                    "title": "Kpi Results Csv"
+                },
+                "investment_evaluation_csv": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "/home/shared_storage/investment_evaluation.csv",
+                    "description": "InvestmentEvalPiece output: investment_evaluation.csv.",
+                    "title": "Investment Evaluation Csv"
+                }
+            },
+            "title": "InputModel",
+            "type": "object"
+        },
+        "output_schema": {
+            "description": "DashboardPiece Output Model.",
+            "properties": {
+                "dashboard_data_json": {
+                    "description": "Path of dashboard consolidated JSON output.",
+                    "title": "Dashboard Data Json",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "dashboard_data_json"
+            ],
+            "title": "OutputModel",
+            "type": "object"
+        },
+        "secrets_schema": null,
+        "source_url": "https://github.com/filipchrvala/industry_sg_vre/tree/main/pieces/DashboardPiece"
+    },
     "SolarSimPiece": {
         "name": "SolarSimPiece",
         "dependency": {
